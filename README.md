@@ -13,4 +13,5 @@
 
 > This will download the css, js and html and put it inside a `component`
 > directory.
+
 ![comp.png](comp.png)
