@@ -5,7 +5,11 @@ import shutil
 
 
 def download():
-    print('will download')
+    if len(sys.argv) == 1:
+        print('Usage: codepenget <url_to_pen>')
+        return None
+
+    print('Downloading...')
     code = get_code(sys.argv[1])
 
     if os.path.isdir('component'):
@@ -27,3 +31,5 @@ def download():
         with open('component/component.html', 'w+') as cfile:
             cfile.write(code['html'])
         cfile.close()
+
+    print('Done')

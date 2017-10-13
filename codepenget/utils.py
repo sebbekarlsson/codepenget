@@ -1,12 +1,19 @@
 import requests
 from bs4 import BeautifulSoup
+from requests.exceptions import MissingSchema, ConnectionError
 
 
 def get_code(codepen_url):
     code = {}
-    res = requests.get(codepen_url)
+
+    try:
+        res = requests.get(codepen_url)
+    except (MissingSchema, ConnectionError):
+        print('Invalid URL or ConnectionError')
+        quit()
 
     if not res:
+        print('Something went wrong')
         return None
 
     soup = BeautifulSoup(res.text, 'html.parser')
